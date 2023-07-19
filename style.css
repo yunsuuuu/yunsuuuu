@@ -1,4 +1,86 @@
-body {
-  margin: 20px;
+/* 웹폰트적용(라이센스를 확인 후 원하는 무료 웹폰트 사용 가능 */
+@font-face {
+    font-family: "YUniverse-B";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_yuniverse@1.0/YUniverse-B.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
-          
+
+/* reset(기본 태그 스타일 초기화) */
+body, p, ul, li, h1, h2, h3, h4, h5, h6 {margin: 0; padding: 0; font-family: "YUniverse-B";}
+li { list-style: none; }
+a, a:link, a:visited, a:hover, a:active, a:focus { color: inherit; text-decoration: none; }
+img { width: 100%; }
+/* layout style(이 부분은 마크업 구조를 알아야 수정이 편리합니다. */
+header { position: fixed; width: 100%; height: 80px; line-height: 80px; z-index: 1; }
+.inner { padding: 0 5vw; margin: 0 auto; max-width: 720px; }
+[class^="con"] .inner { padding-top: 80px; }
+[class^="con"] .txt-box { font-size: 18px; line-height: 1.5; text-align: justify; }
+.con1 .inner { max-width: 1080px; padding-top: 100px; }
+.con1 { height: 100vh; }
+.con1 .img-box { position: absolute; right: 5vw; bottom: 2vw;  }
+.con1 .img-box.morph { border-radius: 40vw 25vw; overflow: hidden; overflow: hidden; width: 500px; height: 500px;}
+.con1 .img-box:hover { animation: morph 2s linear 0s infinite; }
+.con3 { padding-bottom: 5vw; }
+.menu { display: flex; justify-content: space-between; }
+.menu a:hover { text-decoration: underline; animation: colorRotate .5s linear 0s infinite; }
+.box-wrap { display: flex; justify-content: space-between;}
+.line { position: relative; display: inline-block; z-index: 1; }
+.line:before { content:""; position: absolute; bottom: 0; left: 0; z-index: -1; display: inline-block; height: 25%; width: 0%; transition: 0.5s width; }
+.line:hover:before { width: 100%; }
+.quick { position: fixed; right: 0; bottom: 0; margin: 15px; }
+.quick a { display: block; width: 50px; height: 50px; line-height: 50px; text-align: center; background-color: #ffffff; border: 2px solid black; }
+
+@keyframes colorRotate {
+    from { color: #6666ff; }
+    10% { color: #0099ff; }
+    50% { color: #00ff00; }
+    75% { color: #ff3399; }
+    100% { color: #6666ff; }
+}
+
+@keyframes morph {
+    from { border-radius: 40vw 25vw; }
+    10% { border-radius: 35vw 26vw; }
+    50% { border-radius: 28vw 35vw; }
+    75% { border-radius: 35vw 33vw; }
+    100% { border-radius: 40vw 25vw; }
+}
+
+/* customize */
+header { background-color: rgba(255,255,255, 0); }
+.con1 { background-color: #bdb51d; }
+.con1 .img-box img { filter: grayscale(100%); transition: 1s all; }
+.con1 .img-box:hover img { filter: grayscale(0%); }
+.con1 .txt-box {
+    font-size: 5vw;
+    color: #fff;
+}
+.line-box {
+    border: 1px solid #999999;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.line-box h3 {
+    font-size: 3vw;
+    margin-bottom: 20px;
+}
+.line-box h3:hover { 
+    animation: colorRotate .5s linear 0s infinite;
+}
+.line { color: rgba(9,9,9,0.5);}
+.line:before { background-color: #fff55faa; }
+.line:hover { color: #000000;}
+
+.quick a { background-color: #ffffff; border: 2px solid black; }
+.quick a:first-child { background-color: #333333; color: #fff; border: 2px solid white;}
+
+/* 모바일 사이즈 */
+@media (max-width: 720px) {
+    header { height: 60px; line-height: 60px; }
+    .con1 { height: auto; padding-bottom: 10vw; }
+    .con1 .txt-box { font-size: 8vw; }
+    .line-box h3 { font-size: 25px; }
+    .con1 .img-box.morph { position:static; margin-top: 5vw; width: 100%; max-height: auto; height: 100%;}
+}
